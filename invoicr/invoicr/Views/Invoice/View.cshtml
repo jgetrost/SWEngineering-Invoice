@@ -1,0 +1,36 @@
+﻿@model invoicr.Models.InvoicrModel.Invoice
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-intro">
+    <h2>Invoice @Model.ID - Total: @String.Format("{0:C}", Model.Orders.Count > 0 ? Model.Orders.Sum(o => o.Product.Price * o.Quantity) : 0)</h2>
+    <p>These are the Orders for this Invoice.</p>
+</div>
+<a asp-area="" asp-controller="Order" asp-action="Add" asp-route-id="@Model.ID" class="btn btn-primary" id="btnAdd"><span class="glyphicon glyphicon-plus-sign"></span> New Order</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (invoicr.Models.InvoicrModel.Order order in Model.Orders)
+        {
+            <tr>
+                <td>@order.ID</td>
+                <td>@order.Product.Name</td>
+                <td>@order.Product.Descrption</td>
+                <td>@String.Format("{0:C}", order.Product.Price)</td>
+                <td>@order.Quantity</td>
+                <td>@String.Format("{0:C}", order.Product.Price * order.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+</table>

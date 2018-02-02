@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-intro">
+    <h2>Products</h2>
+    <p>These are the available products.</p>
+</div>
+<a asp-area="" asp-controller="Product" asp-action="Add" class="btn btn-primary" id="btnAdd"><span class="glyphicon glyphicon-plus-sign"></span> Add Product</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (invoicr.Models.InvoicrModel.Product product in Model)
+        {
+            <tr>
+                <td>@product.ID</td>
+                <td>@product.Name</td>
+                <td>@product.Descrption</td>
+                <td>@String.Format("{0:C}", product.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

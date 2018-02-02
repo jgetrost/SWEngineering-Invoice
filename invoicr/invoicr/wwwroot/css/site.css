@@ -10,6 +10,17 @@
     padding-right: 15px;
 }
 
+#btnAdd {
+    margin-top: 20px;
+    display: inline-block;
+    float: right;
+}
+
+.table-intro {
+    display: inline-block;
+    float: left;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
